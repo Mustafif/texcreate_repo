@@ -31,6 +31,10 @@ impl Repo{
         }
         Self{current_vers, num, info: map}
     }
+    /// Returns the version of the repo
+    pub fn version(&self) -> u64{
+        self.current_vers
+    }
     /// Creates a new `Repo` using a TOML String
     pub fn from_string(s: &str) -> Self{
         from_str(s).unwrap()
