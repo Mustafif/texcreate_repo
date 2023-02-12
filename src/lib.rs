@@ -59,6 +59,10 @@ impl Repo{
         }
         println!("=====================");
     }
+    /// Checks if a name exists in `info`
+    pub fn template_exist(&self, name: &str) -> bool{
+        self.info.contains_key(name)
+    }
 }
 /// Downloads a `repo.toml` file given a path
 pub async fn download_repo(url: &str, out_path: PathBuf) -> Result<()>{
