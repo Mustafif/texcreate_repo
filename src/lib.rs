@@ -35,6 +35,14 @@ impl Repo{
     pub fn version(&self) -> u64{
         self.current_vers
     }
+    /// Returns the number of templates
+    pub fn num(&self) -> u64{
+        self.num
+    }
+    /// Returns the info
+    pub fn info(&self) -> HashMap<String, String>{
+        self.info.clone()
+    }
     /// Creates a new `Repo` using a TOML String
     pub fn from_string(s: &str) -> Self{
         from_str(s).unwrap()
