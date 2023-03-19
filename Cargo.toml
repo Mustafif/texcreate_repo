@@ -2,7 +2,7 @@
 name = "texcreate_repo"
 description = "Provides the `Repo` type for the TexCreate Project"
 authors = ["Mustafif Khan"]
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 license = "MIT"
 
@@ -11,6 +11,6 @@ license = "MIT"
 [dependencies]
 reqwest = "0.11.14"
 serde = { version = "1.0.152", features = ["derive"] }
-texcore = { version = "0.4.10", features = ["texcreate_template"] }
+texcore = { version = "0.6.0", features = ["texcreate_template"] }
 tokio = { version = "1.25.0", features = ["full"] }
 toml = "0.7.2"
