@@ -1,3 +1,7 @@
+#[cfg(feature="release")]
+/// Provides a way to generate Release notes 
+pub mod release;
+
 use serde::{Serialize, Deserialize};
 use toml::{from_str, to_string_pretty};
 use std::collections::{HashMap, hash_map::IntoIter};
