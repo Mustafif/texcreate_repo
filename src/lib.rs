@@ -8,7 +8,7 @@ use std::collections::{HashMap, hash_map::IntoIter};
 use std::iter::IntoIterator;
 use std::path::PathBuf;
 use reqwest::Client;
-use texcore::template::Template;
+use texcore::template::{Template, Version};
 use tokio::io::{Result, AsyncWriteExt};
 use tokio::fs::File;
 
@@ -17,6 +17,8 @@ use tokio::fs::File;
 pub struct Repo{
     /// Current version of the repo
     current_vers: u64,
+    /// Minimum required TexCreate version
+    texcreate: Version, 
     /// Number of templates
     num: u64,
     /// Contains a HashMap of the `<Name, Description>`
@@ -25,7 +27,7 @@ pub struct Repo{
 
 impl Repo{
     /// Creates a new `Repo`
-    pub fn new(current_vers: u64, templates: &Vec<Template>) -> Self{
+    pub fn new(current_vers: u64, templates: &Vec<Template>, texcreate: Version) -> Self{
         let num = templates.len() as u64;
         let mut map = HashMap::new();
         for t in templates{
@@ -33,11 +35,15 @@ impl Repo{
             let desc = t.description.to_string();
             map.insert(name, desc);
         }
-        Self{current_vers, num, info: map}
+        Self{current_vers, texcreate, num, info: map}
     }
     /// Returns the version of the repo
     pub fn version(&self) -> u64{
         self.current_vers
+    }
+    /// Returns the texcreate version
+    pub fn texc_vers(&self) -> Version{
+        self.texcreate
     }
     /// Returns the number of templates
     pub fn num(&self) -> u64{
